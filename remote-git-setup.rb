@@ -69,7 +69,7 @@ begin
 
 		script_filename = project.snakify
 
-		post_receive.write "sudo /usr/local/bin/#{script_filename}\r\n"
+		post_receive.write "sudo sh /usr/local/bin/#{script_filename}"
 		post_receive.close
 
 		workdir = "#{worktree}#{script_filename}"
@@ -108,6 +108,3 @@ rescue SignalException => e
 rescue Exception => e
 	puts "ERROR: #{e.message}".red
 end
-
-# Dir.chdir repo
-# puts "Initializing git repo".green
